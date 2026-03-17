@@ -223,7 +223,7 @@ testgen-plugin/
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-org/testgen-plugin.git
+git clone https://github.com/mallikj2/testgen-plugin.git
 cd testgen-plugin
 
 # Run tests
