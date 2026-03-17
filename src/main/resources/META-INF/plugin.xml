@@ -1,0 +1,90 @@
+<idea-plugin>
+    <id>com.testgen.plugin</id>
+    <name>TestGen</name>
+    <version>1.0.0</version>
+    <vendor email="support@testgen.dev" url="https://github.com/testgen/testgen-plugin">TestGen</vendor>
+
+    <description><![CDATA[
+        <b>TestGen</b> — Intelligent JUnit Test Generator powered by GitHub Copilot.<br/><br/>
+
+        Automatically generates comprehensive JUnit test classes for your Java code by
+        leveraging GitHub Copilot's AI capabilities. TestGen analyzes your source class,
+        detects your project's test framework (JUnit 4/5, Mockito, Spring Boot Test),
+        and injects a rich, structured prompt into Copilot Chat to generate tests covering
+        all use cases.<br/><br/>
+
+        <b>Features:</b>
+        <ul>
+            <li>Auto-detects JUnit 4/5, Mockito, Spring Boot Test from pom.xml or build.gradle</li>
+            <li>Analyzes source class structure via PSI (methods, fields, annotations)</li>
+            <li>Pre-populates test package and class name</li>
+            <li>Optional description field for additional test context</li>
+            <li>Scaffolds the test file in the correct test source root</li>
+            <li>Injects a structured prompt directly into GitHub Copilot Chat</li>
+        </ul>
+
+        <b>Requirements:</b>
+        <ul>
+            <li>GitHub Copilot plugin must be installed and authenticated</li>
+            <li>Java project with Maven (pom.xml) or Gradle (build.gradle)</li>
+        </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <b>1.0.0</b>
+        <ul>
+            <li>Initial release</li>
+            <li>Support for JUnit 4/5 auto-detection</li>
+            <li>Support for Maven and Gradle projects</li>
+            <li>GitHub Copilot Chat integration via prompt injection</li>
+        </ul>
+    ]]></change-notes>
+
+    <!-- IntelliJ IDEA platform dependency -->
+    <depends>com.intellij.modules.platform</depends>
+    <!-- Java plugin dependency — required for PSI Java support -->
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Notification group for TestGen messages -->
+        <notificationGroup id="TestGen.Notifications"
+                           displayType="BALLOON"
+                           key="notification.group.testgen"/>
+    </extensions>
+
+    <actions>
+        <!-- Primary action: Generate Test -->
+        <action id="TestGen.GenerateTest"
+                class="com.testgen.plugin.actions.GenerateTestAction"
+                text="Generate JUnit Test with Copilot"
+                description="Generate a JUnit test class for the current Java file using GitHub Copilot"
+                icon="/icons/testgen.svg">
+
+            <!-- Tools menu entry -->
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+
+            <!-- Editor right-click context menu -->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+
+            <!-- Project view right-click context menu -->
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+
+            <!-- Keyboard shortcut: Alt+Shift+T -->
+            <keyboard-shortcut keymap="$default" first-keystroke="alt shift T"/>
+        </action>
+
+        <!-- Separator in Tools menu for cleanliness -->
+        <group id="TestGen.ToolsGroup"
+               text="TestGen"
+               description="TestGen — JUnit Test Generator"
+               popup="true"
+               icon="/icons/testgen.svg">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <action id="TestGen.GenerateTestGroup"
+                    class="com.testgen.plugin.actions.GenerateTestAction"
+                    text="Generate JUnit Test with Copilot"
+                    description="Generate a JUnit test class for the current Java file using GitHub Copilot"/>
+        </group>
+    </actions>
+
+</idea-plugin>
