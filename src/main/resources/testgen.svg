@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Background circle -->
+  <circle cx="8" cy="8" r="7.5" fill="#2ECC71" stroke="#27AE60" stroke-width="0.5"/>
+  <!-- Test beaker shape -->
+  <path d="M6 3 L6 8.5 L4 12 L12 12 L10 8.5 L10 3 Z"
+        fill="none" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+  <!-- Top bar of beaker -->
+  <line x1="5.5" y1="3" x2="10.5" y2="3" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Liquid in beaker -->
+  <path d="M5 10.5 L4.2 12 L11.8 12 L11 10.5 Z" fill="white" opacity="0.8"/>
+  <!-- Bubbles -->
+  <circle cx="7.5" cy="9.5" r="0.6" fill="white" opacity="0.9"/>
+  <circle cx="9" cy="10.2" r="0.4" fill="white" opacity="0.7"/>
+</svg>
