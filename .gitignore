@@ -1,0 +1,28 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Plugin sandbox (runIde)
+.intellij-platform/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+local.properties
+
+# Signing keys (never commit these)
+*.p12
+*.jks
+chain.crt
+private.pem
